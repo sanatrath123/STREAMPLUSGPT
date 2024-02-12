@@ -3,32 +3,34 @@ import {useForm} from 'react-hook-form'
 import Input from "./Input";
 import authService from '../Appwrite/Auth'
 import {login} from '../store/AuthSlice'
-import { useNavigate , Link, Navigate } from "react-router-dom";
+import { useNavigate , Link} from "react-router-dom";
 import {  useDispatch } from "react-redux";
 
 const Signup = () => {
 
   const {register , handleSubmit} = useForm()
  const dispatch = useDispatch()
+ const Navigate = useNavigate()
 //create function 
  const create = async  (data)=>{
 
-const userdata = await  authService.CreateAccount(...data)
+const userdata = await  authService.CreateAccount(data)
+
 if(userdata){
-  const userdata = authService.GetCurrentUser(userdata)
-      dispatch(login(userdata))
- 
+  const userData = authService.GetCurrentUser(userdata)
+      dispatch(login(userData))
+ console.log(userData)
   Navigate('/login')
 }
 }
 
   return (
-    <section className="bg-gray-700 dark:bg-gray-900">
-    <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+ 
+    <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 mt-0">
        
-        <div className="w-full bg-pink-50 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+        <div className="w-full bg-gray-800 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-                <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                <h1 className="text-xl font-bold leading-tight tracking-tight text-white md:text-2xl dark:text-white">
                     Create and account
                 </h1>
 
@@ -80,7 +82,7 @@ if(userdata){
                     </div>
                 </form>
                
-                <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+                <p className="text-sm font-light text-white dark:text-gray-400">
                         Already have an account? 
                         {/* ADD THE LINK */}
                         {/* <Link className="font-medium text-primary-600 hover:underline dark:text-primary-500"></Link>Login here <Link/> */}
@@ -89,7 +91,7 @@ if(userdata){
             </div>
         </div>
     </div>
-  </section>
+  
   );
 };
 

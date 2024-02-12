@@ -42,9 +42,11 @@ async LoginAccount(data){
 
 //Logout 
 async LogoutAccount(){
+    console.log("in logout auth")
 try {
-    const User = await this.account.deleteSession()
-  console.log(User)
+    
+     return await this.account.deleteSessions(this.account)
+      
 } catch (error) {
     console.log("ERROR IN LOGOUT SERVICE", error)
 }
