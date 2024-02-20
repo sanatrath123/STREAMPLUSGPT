@@ -4,9 +4,10 @@ export const ApiOption =  {
     method: 'GET',
 headers: {
   accept: 'application/json',
-  Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwZGE4NDRjM2E2MzM1NDBhYzA2OGZhZDVjM2FmMDkyOCIsInN1YiI6IjY0ZjYxZDg0ZTBjYTdmMDBlYzg4ZmFhYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jJZbILBQUzLGzWyZWEL7t2XfA6PhGpE7sVKPagcP_wE'
+  Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NDMyNTBhZjU2ZGEwMmEyZTJmNjA4ZTkwZDhmN2NkMCIsInN1YiI6IjY1Y2EzYzI4NDM1MDExMDE2MmU4ZmRmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.71g9Q4jtROeCqkB8GF6saebgeHdNFdQwRKXoJsNHygE"
 }
 };
 
 
-export const ApiUrl =  'https://api.themoviedb.org/3/account/20992725/lists?page=1';
+export const ApiUrl = "https://api.themoviedb.org/3/movie/changes?page=1"
+

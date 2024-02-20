@@ -49,8 +49,8 @@ const dispatch = useDispatch()
             <Link to={item.slug}>{item.name}</Link>
           </li> : null
         ))}
-        <li className='my-auto mx-8 p-2'>
-          <img src='https://toppng.com/uploads/preview/user-account-management-logo-user-icon-11562867145a56rus2zwu.png' alt='account' className='w-8 h-8 bg-black' />
+        <li className='my-auto mx-8 p-2 flex '>
+          <img src='https://toppng.com/uploads/preview/user-account-management-logo-user-icon-11562867145a56rus2zwu.png' alt='account' className='w-8 h-8 bg-black' />{userData ? <p className='ml-2 bg-gray-800'>Hello {userData.name}</p> : null}
         </li>
         {
           status ? <li className='my-auto mx-8 p-2 corser-pointer' onClick={LogoutHandel}>

@@ -1,30 +1,23 @@
-import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import {ApiOption, ApiUrl} from '../Constant'
 
+import { useSelector } from 'react-redux'
+import useNowplaying from '../hooks/useNowplaying'
+import Maincontainer from './Maincontainer'
 
 const Home = () => {
-  
-const GetMovies =  async ()=>{
+  const status = useSelector((state)=>state.auth.status)
+  useNowplaying()
 
-  console.log(ApiUrl)
-  try {
-    const data = await fetch(ApiUrl,ApiOption)
+ const NowPlayingMovies = useSelector((state)=>state.movies.NowPlayingMovies)
+ 
+return( 
+  status  ? 
 
-  const json = await data.json()
+  <div className='bg-gray-400 w-100 h-full '>
+ {console.log("hi")}
+<Maincontainer/>
 
-  console.log(json.result)
-  } catch (error) {
-    console.log("API NOT FETCHED", error)
-  }
-}
 
-useEffect(()=>{
-  GetMovies()
-},[])
- const status = useSelector((state)=>state.auth.status)
-return(
-  status ? <div className='bg-gray-400 w-50 h-30 '>Home</div> : <div className='w-full h-64 bg-black'>this is unathenticated home</div>
+  </div> : <div className='bg-red w-full h-80'></div>
 ) 
 }
 
