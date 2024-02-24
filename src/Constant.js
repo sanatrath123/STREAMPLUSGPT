@@ -9,5 +9,5 @@ headers: {
 };
 
 
-export const ApiUrl = "https://api.themoviedb.org/3/movie/changes?page=1"
+
 

@@ -7,24 +7,24 @@ import useTralierid from '../hooks/useTralierid'
 
 const Maincontainer = () => {
 
-  const NowPlaying = useSelector((state)=>state.movies.Nowplayingmovies)
- const trailerid = useSelector((state)=>state.movies.Trailerid)
+//   const NowPlaying = useSelector((state)=>state.movies.Nowplayingmovies)
+//  const trailerid = useSelector((state)=>state.movies.Trailerid)
     
- useNowPlayingMovie( )
- 
- useTralierid()
+//  useNowPlayingMovie( )
+//  useTralierid()
 
     return (
 
-  NowPlaying ?
-    <div className='w-full h-80 bg-gray-700 items-start'>
+  
+    <div className='w-full h-screen bg-gray-700 items-start'>
       
-<Bgvideo id={trailerid?.[0]?.key} />
+ <Bgvideo /> 
+{/* add the id={trailerid?.[0]?.key} inside the Bgvideo as a props */}
 <Mainmoviesinfo/>
-
-
-    </div> 
-    : null )
+{/* pass the props from Mainmoviesinfo */}
+ </div> 
+//Add conditional operator on NowplayingMovies ? : null
+   )
 }
   
 

@@ -1,0 +1,8 @@
+
+1. add the keys inside the BGvideo file
+
+2. uncmt all hooks and subscribed variables from store in Home , Manicontainer 
+
+3.  pass dynamic props to MainMovieinfo from Manicontainer and add the values inside it
+
+4. 

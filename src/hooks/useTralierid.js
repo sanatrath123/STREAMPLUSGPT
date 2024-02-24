@@ -9,7 +9,7 @@ const useTralierid = () => {
 
 
 const dispatch = useDispatch()
-console.log("hi from trailer")
+
 const url =  `https://api.themoviedb.org/3/movie/${moviedata?.id}/videos?language=en-US`;
 
 const GetTrailerid = async ()=>{
