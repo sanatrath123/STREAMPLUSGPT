@@ -11,7 +11,7 @@ import Login from './components/Login.jsx'
 import Signup from './components/Signup.jsx'
 import Header from './components/Header.jsx'
 import AuthProtection from './components/AuthProtection.jsx'
-
+import GptSearch from './components/GptSearch.jsx'
 
 const route = createBrowserRouter([
 
@@ -37,6 +37,12 @@ const route = createBrowserRouter([
     element: <AuthProtection  Authenttication={false}>
     <Signup/>
   </AuthProtection>
+  },
+  {
+    path: "/GptSearch",
+    element:<AuthProtection Authentication={true}>
+      <GptSearch/>
+    </AuthProtection>
   },
   
 

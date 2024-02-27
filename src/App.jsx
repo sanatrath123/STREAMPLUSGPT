@@ -5,9 +5,7 @@ import Welcome from './components/Welcome'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 function App() {
-  const dispatch = useDispatch()
-const [count, setCount ]= useState(useSelector((state)=>state.auth.Count))
-console.log(count)
+ 
 
 
   return (
