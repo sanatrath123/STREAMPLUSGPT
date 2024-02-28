@@ -5,21 +5,23 @@ import Maincontainer from './Maincontainer'
 import MovieList from './MovieList'
 
 const Home = () => {
+  
   const status = useSelector((state)=>state.auth.status)
- const NowPlayingMovies = useSelector((state)=>state.movies.NowPlayingMovies)
+ const NowPlayingMovies = useSelector((state)=>state.movies. Nowplayingmovies)
  
- //useNowplaying()
- //uncmt this
+ useNowplaying()
+ 
 
 return( 
-  status  ? 
+  status && NowPlayingMovies  ? 
 
   <div className='bg-gray-400 w-full overflow-hidden'>
+  
+   {/* here we send the data from root to maintain the flow */}
+<Maincontainer {...NowPlayingMovies[0]}/> 
+{/* <MovieList/> */}
 
-<Maincontainer/>
-<MovieList/>
-
-  </div> : <div className='bg-red w-full h-80'></div>
+  </div> : <div className='bg-red-600 w-full h-80'></div>
 ) 
 }
 

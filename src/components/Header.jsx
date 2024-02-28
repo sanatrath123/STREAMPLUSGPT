@@ -24,7 +24,7 @@ const StoreLang = useSelector((state)=>state.Lang.lang)
     
      
   }
-console.log(lang[StoreLang].HOME)
+
   const Navitems = [
     {
       name: 'HOME',
@@ -45,7 +45,7 @@ console.log(lang[StoreLang].HOME)
   ];
 
   const Optionchange = (event)=>{
-console.log(event.target.value)
+
 dispatch(changeLang(event.target.value))
 
   }
@@ -64,7 +64,7 @@ dispatch(changeLang(event.target.value))
         </li> */}
 
 <li className='my-auto mx-8 p-1 flex flex-col'>
-  {console.log(lang)}
+ 
   <select  className='text-black text-xl' onChange={Optionchange}>
     <option value={"English"} className='text-black text-xl'>English</option>
     <option value={"hindi"} className='text-black text-xl'>hindi</option>

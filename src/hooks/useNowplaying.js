@@ -8,7 +8,9 @@ import { AddNowplaying} from '../store/MovieSlice'
 
 const dispatch = useDispatch()
 const Nowplayingmovies = useSelector((state)=>state.movies.Nowplayingmovies)
-const ApiUrl = 'https://api.themoviedb.org/3/movie/changes?page=1'
+const ApiUrl = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc"
+
+
     const GetNowPlayingMovies =  async ()=>{
 
         try {
@@ -16,7 +18,8 @@ const ApiUrl = 'https://api.themoviedb.org/3/movie/changes?page=1'
           const data = await fetch(ApiUrl,ApiOption)
 
         const json = await data.json()
-        console.log(json)
+        console.log(json.results)
+       
         dispatch(AddNowplaying(json.results))
       
       } catch (error) {

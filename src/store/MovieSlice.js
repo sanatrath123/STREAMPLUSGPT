@@ -23,7 +23,7 @@ const MovieSlice = createSlice({
     },
 
     AddTrailerid:(state,action)=>{
-      console.log("data is coming to store", action.payload)
+     
       state.Trailerid = action.payload
     }
 
