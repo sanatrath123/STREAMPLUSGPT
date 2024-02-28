@@ -19,7 +19,7 @@ return(
   
    {/* here we send the data from root to maintain the flow */}
 <Maincontainer {...NowPlayingMovies[0]}/> 
-{/* <MovieList/> */}
+<MovieList/>
 
   </div> : <div className='bg-red-600 w-full h-80'></div>
 ) 

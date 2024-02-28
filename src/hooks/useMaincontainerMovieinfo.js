@@ -7,10 +7,10 @@ const useNowPlayingMovie = () => {
     
 const dispatch = useDispatch()
 const NowPlaying = useSelector((state)=>state.movies.Nowplayingmovies)
-console.log(NowPlaying[0])
+
 const GetMovie =  async ()=>{
-return 1
-    
+
+    NowPlaying ? dispatch(AddMovieData(NowPlaying[0])) : null
 }
   
 useEffect(()=>{

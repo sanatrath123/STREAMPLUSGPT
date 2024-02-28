@@ -3,7 +3,7 @@ import { ApiOption } from '../Constant';
 import {useDispatch, useSelector  } from 'react-redux';
 import { AddTrailerid } from '../store/MovieSlice';
 
-const useTralierid = (id) => {
+const useTralierid =  () => {
  
      const NowplayingMovies  = useSelector((state)=>state.movies.Nowplayingmovies)
 
