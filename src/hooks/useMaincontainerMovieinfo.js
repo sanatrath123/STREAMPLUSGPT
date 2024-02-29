@@ -4,13 +4,14 @@ import { AddMovieData } from "../store/MovieSlice";
 
 
 const useNowPlayingMovie = () => {
-    
+     
+   
 const dispatch = useDispatch()
 const NowPlaying = useSelector((state)=>state.movies.Nowplayingmovies)
 
 const GetMovie =  async ()=>{
-
-    NowPlaying ? dispatch(AddMovieData(NowPlaying[0])) : null
+    const data = NowPlaying[3]
+    NowPlaying ? dispatch(AddMovieData(data)) : null
 }
   
 useEffect(()=>{

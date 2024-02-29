@@ -4,12 +4,10 @@ import {useDispatch, useSelector  } from 'react-redux';
 import { AddTrailerid } from '../store/MovieSlice';
 
 const useTralierid =  () => {
- 
+
      const NowplayingMovies  = useSelector((state)=>state.movies.Nowplayingmovies)
 
-     const Movieid = NowplayingMovies[0]?.id
-
-
+     const Movieid = NowplayingMovies[3]?.id
 
 
 const dispatch = useDispatch()
@@ -20,7 +18,13 @@ const GetTrailerid = async ()=>{
     try {
         const data =  await fetch(url,ApiOption)
     const json = await data.json()
-    dispatch(AddTrailerid(json?.results))
+
+   const onlyTrailer = json.results.filter((trailer)=>(
+    trailer.type == "Trailer"
+))
+console.log("trailerid",onlyTrailer)
+    dispatch(AddTrailerid(onlyTrailer))
+    
     } catch (error) {
         console.log("ERROR IN TRAILER FETCH",error)
     }
@@ -32,3 +36,5 @@ useEffect(()=>{
 }
 
 export default useTralierid
+
+

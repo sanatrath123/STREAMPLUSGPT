@@ -18,7 +18,7 @@ const ApiUrl = "https://api.themoviedb.org/3/discover/movie?include_adult=false&
           const data = await fetch(ApiUrl,ApiOption)
 
         const json = await data.json()
-        console.log(json.results)
+       
        
         dispatch(AddNowplaying(json.results))
       

@@ -1,29 +1,35 @@
-import React from 'react'
-import Moviecard from './Moviecard'
-import { useSelector } from 'react-redux'
+import React from 'react';
+import Moviecard from './Moviecard';
+import { useSelector } from 'react-redux';
+import useTopratedmovie from '../hooks/useTopratedmovie'
+
 
 const MovieList = () => {
+  const Nowplaying = useSelector((state) => state.movies.Nowplayingmovies);
 
-const Nowplaying = useSelector((state)=>state.movies.Nowplayingmovies )
-
+useTopratedmovie()
 
   return (
- <div className='w-full flex flex-col bg-red-400 mt-4 '>
- <h1 className='bg-red-400 text-3xl text-white mb-3 pl-4'>NOWPLAYING MOVIES</h1>
-   {Nowplaying ?
-     <div className='w-full bg-red-400 flex flex-wrap absolute  justify-center mt-8'>
-      
-    {
-      Nowplaying.map((movies)=>(
-        <Moviecard key={movies.id} {...{ poster_path: movies.poster_path, rating: movies.vote_average }} />
-      ))
-    }
-       
+    <div className='w-full bg-red-400 mt-4 relative overflow-x-auto'>
+      <h1 className='bg-black text-3xl text-white flex justify-center pb-4'>
+        NOWPLAYING MOVIES
+      </h1>
+      {Nowplaying ? (
+        <div className='w-[100%] flex justify-center space-x-4 mt-4 flex-wrap'>
+          {Nowplaying.map((movies) => (
+            <Moviecard
+              key={movies.id}
+              {...{
+                poster_path: movies.poster_path,
+                rating: movies.vote_average,
+              }}
+            />
+          ))}
+        </div>
+      ) : null}
     </div>
+  );
+};
 
-    : null}
- </div>
-  )
-}
+export default MovieList;
 
-export default MovieList
