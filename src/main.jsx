@@ -9,9 +9,10 @@ import { RouterProvider } from 'react-router-dom'
 import Home from './components/Home.jsx'
 import Login from './components/Login.jsx'
 import Signup from './components/Signup.jsx'
-import Header from './components/Header.jsx'
 import AuthProtection from './components/AuthProtection.jsx'
 import GptSearch from './components/GptSearch.jsx'
+import IndiMoviepage from './components/IndiMoviepage.jsx'
+
 
 const route = createBrowserRouter([
 
@@ -21,20 +22,21 @@ const route = createBrowserRouter([
 
   children : [
   {
-    path:"/home",
-    element:<AuthProtection  Authenttication={true}>
+    path:"/",
+    element:<AuthProtection  Authentication={true}>
       <Home/>
-    </AuthProtection>
+    </AuthProtection>,
+
   }, 
   {
     path: "/login",
-    element:<AuthProtection  Authenttication={false}>
+    element:<AuthProtection  Authentication={false}>
     <Login/>
   </AuthProtection>
   },
   {
     path: "/signup",
-    element: <AuthProtection  Authenttication={false}>
+    element: <AuthProtection  Authentication={false}>
     <Signup/>
   </AuthProtection>
   },
@@ -43,6 +45,13 @@ const route = createBrowserRouter([
     element:<AuthProtection Authentication={true}>
       <GptSearch/>
     </AuthProtection>
+  },
+  {
+    path: "/IndiMoviepage/:movieId",
+    element:<AuthProtection Authentication={true}>
+<IndiMoviepage/>
+    </AuthProtection>
+    
   },
   
 

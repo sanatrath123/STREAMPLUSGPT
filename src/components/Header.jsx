@@ -28,7 +28,7 @@ const StoreLang = useSelector((state)=>state.Lang.lang)
   const Navitems = [
     {
       name: 'HOME',
-      slug: '/home',
+      slug: '/',
       active: status
     },
     {
@@ -41,6 +41,11 @@ const StoreLang = useSelector((state)=>state.Lang.lang)
       slug: '/signup',
       active: !status
     },
+    {
+      name:"demo",
+      slug:'/IndiMoviepage',
+      active: status
+    }
     
   ];
 
@@ -53,7 +58,7 @@ dispatch(changeLang(event.target.value))
   return (
     <div className='w-full h-20 bg-gray-900 flex justify-between'>
       <img src='https://www.brandbucket.com/sites/default/files/logo_uploads/405492/large_plusstream.png' alt='logo' className='h-30 w-30 ml-8 bg-gray-300' />
-      <ul className='text-white font-bold text-xl flex flex-wrap  w-5/12'>
+      <ul className='text-white font-bold text-xl flex flex-wrap  w-6/12'>
         {Navitems.map((item) => (
           item.active ? <li key={item.name} className='my-auto mx-8 p-2' onClick={() => {}}>
             <Link to={item.slug}>{item.name}</Link>

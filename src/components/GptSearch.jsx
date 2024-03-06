@@ -1,18 +1,40 @@
-import { Input } from 'postcss'
-import React from 'react'
+
+import OpenAI from "openai";
 import lang from '../hooks/lang'
 import { useSelector } from 'react-redux'
-
+import conf from '../conf/conf'
 
 const GptSearch = () => {
 
 const StoreLang = useSelector((state)=>state.Lang.lang)
 
-const Submit = (event)=>{
+const Submit = async (event)=>{
   event.preventDefault(); // Prevents the default form submission behavior
   const value = event.target.elements.inputValue.value;
-  
+
+//function for api call of openai
+const openai = new OpenAI({ apiKey: "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" , dangerouslyAllowBrowser: true })
+
+try {
+   {
+    const completion = await openai.chat.completions.create({
+      messages: [{ role: "system", content:"You are a helpful assistant."}],
+      model: "gpt-3.5-turbo",
+    });
+   
+    console.log(completion.choices[0]);
+   }
+   
+} catch (error) {
+  console.log("ERROR IN OPENAI FETCH",error)
 }
+
+ }
+
+
+ 
+
+
 
 
   return (
@@ -21,7 +43,7 @@ const Submit = (event)=>{
 
 {lang[StoreLang].gptHeader}
  </h1>
- <div className='mt-8 p-4 w-6/12 h-80 bg-gray-200 overflow-y-scroll'>
+ <div className='mt-8 p-4 w-6/12 h-96 bg-gray-200 overflow-y-scroll'>
 
 </div>
 

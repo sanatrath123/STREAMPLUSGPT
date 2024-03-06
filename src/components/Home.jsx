@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import useNowplaying from '../hooks/useNowplaying'
 import Maincontainer from './Maincontainer'
 import MovieList from './MovieList'
-
+import useIndivisualtralier from '../hooks/useIndivisualtralier'
 const Home = () => {
   
   const status = useSelector((state)=>state.auth.status)

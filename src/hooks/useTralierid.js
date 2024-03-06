@@ -22,7 +22,7 @@ const GetTrailerid = async ()=>{
    const onlyTrailer = json.results.filter((trailer)=>(
     trailer.type == "Trailer"
 ))
-console.log("trailerid",onlyTrailer)
+
     dispatch(AddTrailerid(onlyTrailer))
     
     } catch (error) {
