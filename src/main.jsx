@@ -12,7 +12,7 @@ import Signup from './components/Signup.jsx'
 import AuthProtection from './components/AuthProtection.jsx'
 import GptSearch from './components/GptSearch.jsx'
 import IndiMoviepage from './components/IndiMoviepage.jsx'
-
+import SearchPage from './components/SearchPage.jsx'
 
 const route = createBrowserRouter([
 
@@ -50,6 +50,13 @@ const route = createBrowserRouter([
     path: "/IndiMoviepage/:movieId",
     element:<AuthProtection Authentication={true}>
 <IndiMoviepage/>
+    </AuthProtection>
+    
+  },
+  {
+    path: "/search",
+    element:<AuthProtection Authentication={true}>
+<SearchPage/>
     </AuthProtection>
     
   },

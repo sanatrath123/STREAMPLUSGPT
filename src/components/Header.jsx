@@ -42,8 +42,8 @@ const StoreLang = useSelector((state)=>state.Lang.lang)
       active: !status
     },
     {
-      name:"demo",
-      slug:'/IndiMoviepage',
+      name:"Movies🔍",
+      slug:'/search',
       active: status
     }
     

@@ -9,7 +9,8 @@ const IndiMoviepage = () => {
 //   console.log(id)
 //  const info = useSelector((state)=>state.movies.MovieId?.info)
  
-const {movieId} = useParams()
+const movieId = useParams()
+console.log(movieId)
 
  const MovieInfo = useIndivisualtralier(movieId)
 
@@ -25,7 +26,7 @@ const {movieId} = useParams()
         {/* this is the other movies section */}
         <h1 className='text-3xl text-white my-2 p-2 '>Other Movies Section</h1>
         
-        <div className='w-full aspect-auto flex  bg-gray-800  flex-wrap  items-center'>
+        <div className='w-full aspect-auto flex  bg-gray-800  flex-wrap justify-center  '>
         {
            MovieInfo.map((item)=>(
             <iframe className='w-3/12 h-80 my-2 mx-2' key={item.id} src={`https://www.youtube.com/embed/${item.key}?si=x9iOrQcMuYRo1F64`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

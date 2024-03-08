@@ -85,6 +85,7 @@ return(
         <Moviecard
           key={movies.id}
           {...{
+            id: movies.id,
             poster_path: movies.poster_path,
             rating: movies.vote_average,
           }}

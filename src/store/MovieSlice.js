@@ -8,7 +8,7 @@ const initialState = {
     Toprated:null,
     FavoriteList: [],
     // movie id what is opening in its own page
-    MovieId: {id:null , info:{}},
+    Movies: {name:[] , info:null},
     
 }
 
@@ -39,17 +39,16 @@ const MovieSlice = createSlice({
       state.FavoriteList.push(action.payload)
     },
    
-   AddMovieId: (state,action)=>{
-    state.MovieId.id = action.payload
+   AddSearchMovie: (state,action)=>{
+    state.Movies.name = action.payload
    },
-
-   AddIndivisualMovieData: (state, action)=>{
-    state.MovieId.info = action.payload
-   }
   
+   AddSearchMovieinfo: (state, action)=>{
+    state.Movies.info = action.payload
+   }
   }
 
 })
 
-export const  {AddNowplaying,AddMovieData,AddTrailerid , AddToprated,AddFavoriteList , AddMovieId,AddIndivisualMovieData} = MovieSlice.actions 
+export const  {AddNowplaying,AddMovieData,AddTrailerid , AddToprated,AddFavoriteList , AddSearchMovie , AddSearchMovieinfo} = MovieSlice.actions 
 export default MovieSlice.reducer

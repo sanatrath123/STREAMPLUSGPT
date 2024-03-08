@@ -4,6 +4,7 @@ import useNowplaying from '../hooks/useNowplaying'
 import Maincontainer from './Maincontainer'
 import MovieList from './MovieList'
 import useIndivisualtralier from '../hooks/useIndivisualtralier'
+import Login from './Login'
 const Home = () => {
   
   const status = useSelector((state)=>state.auth.status)
@@ -21,7 +22,7 @@ return(
 <Maincontainer /> 
 <MovieList/>
 
-  </div> : <div className='bg-red-600 w-full h-80'></div>
+  </div> : <Login/>
 ) 
 }
 
