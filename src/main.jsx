@@ -13,6 +13,7 @@ import AuthProtection from './components/AuthProtection.jsx'
 import GptSearch from './components/GptSearch.jsx'
 import IndiMoviepage from './components/IndiMoviepage.jsx'
 import SearchPage from './components/SearchPage.jsx'
+import Watchlater from './components/Watchlater.jsx'
 
 const route = createBrowserRouter([
 
@@ -60,6 +61,15 @@ const route = createBrowserRouter([
     </AuthProtection>
     
   },
+
+  {
+    path: "/watchlater",
+    element: <AuthProtection Authentication={true}>
+      <Watchlater/>
+    </AuthProtection>
+
+    
+  }
   
 
 ]

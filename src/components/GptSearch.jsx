@@ -13,7 +13,7 @@ const Submit = async (event)=>{
   const value = event.target.elements.inputValue.value;
 
 //function for api call of openai
-const openai = new OpenAI({ apiKey: "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" , dangerouslyAllowBrowser: true })
+const openai = new OpenAI({ apiKey: "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" , dangerouslyAllowBrowser: true })
 
 try {
    {

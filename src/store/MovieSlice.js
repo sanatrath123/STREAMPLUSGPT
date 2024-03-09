@@ -38,7 +38,11 @@ const MovieSlice = createSlice({
     AddFavoriteList: (state, action)=>{
       state.FavoriteList.push(action.payload)
     },
-   
+
+    DeleteFavorite: (state ,action)=>{
+      state.FavoriteList = action.payload
+    },
+
    AddSearchMovie: (state,action)=>{
     state.Movies.name = action.payload
    },
@@ -50,5 +54,5 @@ const MovieSlice = createSlice({
 
 })
 
-export const  {AddNowplaying,AddMovieData,AddTrailerid , AddToprated,AddFavoriteList , AddSearchMovie , AddSearchMovieinfo} = MovieSlice.actions 
+export const  {AddNowplaying,AddMovieData,AddTrailerid , AddToprated,AddFavoriteList , AddSearchMovie , AddSearchMovieinfo,DeleteFavorite} = MovieSlice.actions 
 export default MovieSlice.reducer

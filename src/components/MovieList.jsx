@@ -58,7 +58,7 @@ useTopratedmovie()
 return(
 <div className='w-full bg-red-400 mt-4 relative overflow-x-auto'>
   <h1 className='bg-black text-3xl text-white flex justify-center pb-4'>
-    NOW PLAYING MOVIES
+    NOW PLAYING MOVIES   
   </h1>
   {Nowplaying ? (
     <div className='w-[100%] flex justify-center space-x-4 mt-4 flex-wrap'>

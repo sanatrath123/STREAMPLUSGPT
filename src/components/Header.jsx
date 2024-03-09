@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import authService from '../Appwrite/Auth'
@@ -7,6 +7,7 @@ import { changeLang } from '../store/LangSlice';
 import lang from '../hooks/lang';
 
 const Header = () => {
+  const [toggle , setToggle] = useState(false)
   const status = useSelector((state) => state.auth.status);
 const Navigate = useNavigate()
 const userData = useSelector((state)=>state.auth.UserData)
@@ -68,20 +69,11 @@ dispatch(changeLang(event.target.value))
           <img src='https://toppng.com/uploads/preview/user-account-management-logo-user-icon-11562867145a56rus2zwu.png' alt='account' className='w-8 h-8 bg-black' />{userData ? <p className='ml-2 bg-gray-800'>Hello {userData.name}</p> : null}
         </li> */}
 
-<li className='my-auto mx-8 p-1 flex flex-col'>
- 
-  <select  className='text-black text-xl' onChange={Optionchange}>
-    <option value={"English"} className='text-black text-xl'>English</option>
-    <option value={"hindi"} className='text-black text-xl'>hindi</option>
-    <option value={"odia"} className='text-black text-xl'>odia</option>
-  </select>
- 
-</li>
 
 
         {
           status ? <>
-          <li className='my-auto mx-8 p-2 corser-pointer' onClick={LogoutHandel}>
+          <li className='my-auto mx-8 p-2  cursor-pointer bg-orange-400 rounded-lg' onClick={LogoutHandel}>
           {lang[StoreLang].LOGOUT}
          
         </li>
@@ -92,11 +84,31 @@ dispatch(changeLang(event.target.value))
        <Link to={'/GptSearch'}>  GPt Search </Link>
         </li>
        
+
+
+        <li className='my-auto mx-8 p-1 flex flex-col cursor-pointer' onClick={() => setToggle(!toggle)}>
+  <div className='flex flex-col mx-auto relative'>
+    <img className='w-7 h-7 bg-gray-200 rounded-lg' src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png" alt="" />
+    {toggle ? (
+      <ul className='flex flex-col w-60 bg-gray-500 absolute left-1/2 transform -translate-x-1/2 mt-9 items-center pb-2'>
+        <li className='w-11/12 p-1 mt-4 rounded-lg text-xl bg-blue-400 flex justify-center'>Now Playing</li>
+        <li className='w-11/12 p-1 mt-2 rounded-lg text-xl bg-blue-400 flex justify-center'>TOP RATED</li>
+       <Link to={"/watchlater"}>
+       <li className='w-full p-1 mt-2 rounded-lg text-xl bg-blue-400 flex justify-center'>WatchLater</li>
+       </Link>
+      </ul>
+    ) : null}
+  </div>
+</li>
           </>
         
       
         :null
         }
+
+
+
+
       </ul>
     </div>
   );
