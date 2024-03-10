@@ -14,6 +14,7 @@ const userData = useSelector((state)=>state.auth.UserData)
 const dispatch = useDispatch()
 //select language state variable 
 const StoreLang = useSelector((state)=>state.Lang.lang)
+//const favlist = useSelector((state)=>state.movies.FavoriteList)
   //logout function
   const LogoutHandel = async ()=>{
     const data = await  authService.LogoutAccount() 

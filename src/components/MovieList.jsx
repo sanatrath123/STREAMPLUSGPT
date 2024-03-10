@@ -7,7 +7,7 @@ import useTopratedmovie from '../hooks/useTopratedmovie'
 const MovieList = () => {
   const Nowplaying = useSelector((state) => state.movies.Nowplayingmovies);
  const TopratedList = useSelector((state)=>state.movies.Toprated)
-
+const favoritelist = useSelector((state)=>state.movies.FavoriteList)
 
 useTopratedmovie()
 
@@ -62,17 +62,24 @@ return(
   </h1>
   {Nowplaying ? (
     <div className='w-[100%] flex justify-center space-x-4 mt-4 flex-wrap'>
-      {Nowplaying.map((movies) => (
-        <Moviecard
-          key={movies.id}
-          {...{
-            id: movies.id,
-            poster_path: movies.poster_path,
-            rating: movies.vote_average,
-            title: movies.title
-          }}
-        />
-      ))}
+      {Nowplaying.map((movie) => {
+       const Isicon = favoritelist.find((favmovie)=> favmovie.id === movie.id)
+return(
+<Moviecard
+key={movie.id}
+{...{
+  id: movie.id,
+  poster_path: movie.poster_path,
+  rating: movie.vote_average,
+  title: movie.title,
+  icon: Isicon ? false : true
+  
+}}
+/>
+
+
+)
+      })}
     </div>
   ) : null}
 
@@ -81,16 +88,22 @@ return(
   </h1>
   {TopratedList ? (
     <div className='w-[100%] flex justify-center space-x-4 mt-4 flex-wrap overflow-x-scroll'>
-      {TopratedList.map((movies) => (
-        <Moviecard
-          key={movies.id}
-          {...{
-            id: movies.id,
-            poster_path: movies.poster_path,
-            rating: movies.vote_average,
-          }}
-        />
-      ))}
+      {TopratedList.map((movie) => {
+        const isFav = favoritelist.find((favmovie)=> favmovie.id === movie.id)
+       return(
+<Moviecard
+  key={movie.id}
+  {...{
+    id: movie.id,
+    poster_path: movie.poster_path,
+    rating: movie.vote_average,
+    title: movie.title,
+    icon: isFav ? false : true
+  }}
+/>
+
+       )
+     } )}
     </div>
   ) : null}
 </div>
