@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 import useNowplaying from '../hooks/useNowplaying'
 import Maincontainer from './Maincontainer'
 import MovieList from './MovieList'
-import useIndivisualtralier from '../hooks/useIndivisualtralier'
 import Login from './Login'
 const Home = () => {
   

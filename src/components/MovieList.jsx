@@ -60,10 +60,11 @@ return(
   <h1 className='bg-black text-3xl text-white flex justify-center pb-4'>
     NOW PLAYING MOVIES   
   </h1>
-  {Nowplaying ? (
+  {
+  Nowplaying ? (
     <div className='w-[100%] flex justify-center space-x-4 mt-4 flex-wrap'>
       {Nowplaying.map((movie) => {
-       const Isicon = favoritelist.find((favmovie)=> favmovie.id === movie.id)
+       const Isicon = favoritelist.find((favmovie)=> favmovie?.id === movie?.id)
 return(
 <Moviecard
 key={movie.id}
@@ -81,7 +82,8 @@ key={movie.id}
 )
       })}
     </div>
-  ) : null}
+  ) : null
+  }
 
   <h1 className='bg-black text-3xl text-white flex justify-center pb-4'>
     TOP RATED MOVIES
@@ -89,7 +91,7 @@ key={movie.id}
   {TopratedList ? (
     <div className='w-[100%] flex justify-center space-x-4 mt-4 flex-wrap overflow-x-scroll'>
       {TopratedList.map((movie) => {
-        const isFav = favoritelist.find((favmovie)=> favmovie.id === movie.id)
+        const isFav = favoritelist.find((favmovie)=> favmovie?.id === movie?.id)
        return(
 <Moviecard
   key={movie.id}

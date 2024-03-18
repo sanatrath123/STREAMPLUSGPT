@@ -35,7 +35,7 @@ const Datafetch = async ()=>{
 
         
     }
-
+console.log(movieinfo)
     return movieinfo
 }
 
