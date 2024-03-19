@@ -12,11 +12,10 @@ useEffect(
   ()=>{
  if(authstatus && Authentication !== Authentication )
 {
-  console.log("authstatus",authstatus, "Authentication", Authentication)
   navigate("/login")
 } else if(!Authentication && authstatus !== Authentication)
 {
-  console.log("authstatus",authstatus, "Authentication", Authentication)
+
   navigate("/")
 }
 setLooader(false)

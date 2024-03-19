@@ -15,7 +15,7 @@ const TrendingMovies = useSelector((state)=>state.movies.TrendingMovies)
 
         const data =  await fetch(url,ApiOption)
         const json = await data.json()
-    console.log(json.results)
+  
    dispatch(AddTrendingMovies(json.results))
 
     } catch (error) {

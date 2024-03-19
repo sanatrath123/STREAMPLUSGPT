@@ -92,8 +92,15 @@ dispatch(changeLang(event.target.value))
     <img className='w-7 h-7 bg-gray-200 rounded-lg' src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png" alt="" />
     {toggle ? (
       <ul className='flex flex-col w-60 bg-gray-500 absolute left-1/2 transform -translate-x-1/2 mt-9 items-center pb-2'>
-        <li className='w-11/12 p-1 mt-4 rounded-lg text-xl bg-blue-400 flex justify-center'>Now Playing</li>
-        <li className='w-11/12 p-1 mt-2 rounded-lg text-xl bg-blue-400 flex justify-center'>TOP RATED</li>
+     
+      <li className='w-11/12 p-1 mt-4 rounded-lg text-xl bg-blue-400 flex justify-center'><Link to={"/nowplaying"}>
+          Now Playing
+          </Link></li>
+     
+        <li className='w-11/12 p-1 mt-2 rounded-lg text-xl bg-blue-400 flex justify-center'>
+        <Link to={"/toprated"}>
+          TOP RATED
+          </Link></li>
        <Link to={"/watchlater"}>
        <li className='w-full p-1 mt-2 rounded-lg text-xl bg-blue-400 flex justify-center'>WatchLater</li>
        </Link>

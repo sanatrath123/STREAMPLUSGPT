@@ -42,7 +42,7 @@ async LoginAccount(data){
 
 //Logout 
 async LogoutAccount(){
-    console.log("in logout auth")
+   
 try {
     
      return await this.account.deleteSessions(this.account)

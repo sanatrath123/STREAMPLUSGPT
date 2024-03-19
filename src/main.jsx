@@ -14,6 +14,8 @@ import GptSearch from './components/GptSearch.jsx'
 import IndiMoviepage from './components/IndiMoviepage.jsx'
 import SearchPage from './components/SearchPage.jsx'
 import Watchlater from './components/Watchlater.jsx'
+import NowplayingPage from './components/NowplayingPage.jsx'
+import Topratedpage from './components/Topratedpage.jsx'
 
 const route = createBrowserRouter([
 
@@ -69,6 +71,19 @@ const route = createBrowserRouter([
     </AuthProtection>
 
     
+  },
+  {
+    path: "/nowplaying",
+    element: <AuthProtection Authentication={true}>
+<NowplayingPage/>
+    </AuthProtection>
+  }
+  ,
+  {
+    path: "/toprated",
+    element: <AuthProtection Authentication={true}>
+<Topratedpage/>
+    </AuthProtection>
   }
   
 

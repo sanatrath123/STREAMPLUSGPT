@@ -17,9 +17,9 @@ export class Servise {
 //create a watchlater 
 
 async createWatchlater(data){
-console.log(data)
+
 const {id , poster_path} = data
-console.log(id)
+
 
 const documentId = ID.unique()
     try {

@@ -12,25 +12,28 @@ const dispatch = useDispatch()
 const deleteMovie= (id)=>{
 const Id = id ;
 const newmovie = movielist.filter((movie)=>(
-    movie.id != Id 
+    movie.id !== Id 
 ))
 
 dispatch(DeleteFavorite(newmovie))
+
 console.log(newmovie)
 }
 
 
 //delete all function
 const DeleteAll =()=>{
-    DeleteAllFavorite()  //implement this feature in tommorow
+   
+    dispatch(DeleteAllFavorite())  //implement this feature in tommorow
 }
   
+
     return (
 <div className='w-full flex items-center flex-col mx-auto mt-4'>
 <h1 className='text-4xl text-gray-900 bg-red-400 flex justify-center w-5/12 h-20 rounded-2xl mb-5 pt-3'>
     Watch Later Videos
 </h1>
-    <div className='w-9/12 h-screen flex flex-wrap overflow-hidden justify-center mx-auto bg-gray-500'>
+    <div className='w-9/12 flex flex-wrap overflow-hidden justify-center mx-auto bg-gray-500'>
 
 
 {

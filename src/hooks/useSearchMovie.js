@@ -31,7 +31,7 @@ const Datafetch = async  () =>{
 const result = json.results.filter((movies, index)=>(
    index < 9   
 ))
-console.log(result)
+
 //dispatch the search info to store 
 dispatch(AddSearchMovieinfo(result)) 
 }

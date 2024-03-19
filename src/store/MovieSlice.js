@@ -37,14 +37,21 @@ const MovieSlice = createSlice({
     },
 
     AddFavoriteList: (state, action)=>{
-      state.FavoriteList.push(action.payload)
+     const disData = action.payload
+     const isAllready = state.FavoriteList.some((movie)=> movie.id === disData.id)
+      if(!isAllready){
+        state.FavoriteList.push(action.payload)
+      }
+      //console.log(state.FavoriteList)
     },
 
     DeleteFavorite: (state ,action)=>{
+    
       state.FavoriteList = action.payload
     },
     DeleteAllFavorite: (state )=>{
-      state.FavoriteList = null
+      console.log("in delete all")
+      state.FavoriteList = []
     },
 
    AddSearchMovie: (state,action)=>{
