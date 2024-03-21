@@ -38,7 +38,7 @@ setShowicon(false)
 // add in 1st div hover:scale-125 
 
 return (
-  <div className='relative min-w-60 bg-transparent mx-8 my-5 shadow-2xl transition-all  hover:scale-125 duration-500 cursor-pointer rounded-lg overflow-none'>
+  <div className='relative min-w-60  bg-transparent mx-8 my-5 shadow-2xl transition-all  hover:scale-125 duration-500 cursor-pointer rounded-lg overflow-none'>
    <div className='flex '>
    {showicon && (
       <div>

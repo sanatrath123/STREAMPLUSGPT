@@ -13,18 +13,19 @@ const Topratedpage = () => {
 return (
     MovieList ?
 
-  <div className='w-full bg-gray-950 pt-4 '>
+  <div className='w-full bg-zinc-800 pt-4 '>
 <div className='mt-2 p-2 ml-8 flex align-middle '>
     <Link to={"/"}>
     <button className='text-gray-100 bg-gray-400 w-16 h-8 rounded-lg'>BACK</button>
     </Link>
-<h1 className='text-3xl font-bold text-gray-100  ml-8'> NOW PLAYING MOVIES</h1>
+<h1 className='text-3xl font-bold text-gray-100  ml-8'> TOP-RATED MOVIES</h1>
 </div>
 
-<div className='flex flex-wrap justify-center mt-4'>
+<div className='flex flex-wrap justify-center mt-4 overflow-hidden'>
 {
     MovieList.map((movie)=>(
-       <Moviecard
+     <div className='max-w-60 mx-6' key={movie.id}>
+  <Moviecard
        key={movie.id}
        {...{
 id: movie.id ,
@@ -34,6 +35,7 @@ title: movie.title,
         }
        }
        /> 
+     </div>
     ))
 }
 </div>

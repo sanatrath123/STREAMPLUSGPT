@@ -49,8 +49,12 @@ const DeleteAll =()=>{
        
     )) : <div>
 <h1 className='text-2xl text-gray-900  flex justify-center w-7/12   mb-5 pt-3 p-4'>
-  There is no Watch Later Videos 
+  There is no Watch Later Videos
 </h1>
+
+<Link to={"/"}>BACK
+  <button className='w-12 h-8 bg-slate-400 text-white text-2xl'>BACK</button>
+  </Link>
 
     </div>
 }

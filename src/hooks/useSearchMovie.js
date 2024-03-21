@@ -8,18 +8,18 @@ const useSearchMovie = () => {
 
     const name = useSelector((state)=>state.movies.Movies.name)
     
-   const prevname = useRef(name)
+   const prevname = useRef()
 // const [info , setInfo] = useState(null)
 const url =  `https://api.themoviedb.org/3/search/movie?query=${name}&include_adult=false&language=en-US&page=1`
 const dispatch = useDispatch()
 
- useEffect(()=>{
-if(prevname.current != name){
-    Datafetch() 
-    prevname.current = name
-}
- },[name])
-
+useEffect(()=>{
+    if(prevname.current != name){
+        Datafetch() 
+        prevname.current = name
+    }
+},[])
+ 
  
 
 const Datafetch = async  () =>{
@@ -36,6 +36,8 @@ const result = json.results.filter((movies, index)=>(
 //dispatch the search info to store 
 dispatch(AddSearchMovieinfo(result)) 
 }
+
+
 
 
 }

@@ -58,7 +58,7 @@ dispatch(changeLang(event.target.value))
   }
 
   return (
-    <div className='w-full h-20 bg-gray-900 flex justify-between'>
+    <div className='w-full h-20 bg-zinc-800 flex justify-between '>
       <img src='https://www.brandbucket.com/sites/default/files/logo_uploads/405492/large_plusstream.png' alt='logo' className='h-30 w-30 ml-8 bg-gray-300' />
       <ul className='text-white font-bold text-xl flex flex-wrap  w-6/12'>
         {Navitems.map((item) => (
@@ -91,7 +91,7 @@ dispatch(changeLang(event.target.value))
   <div className='flex flex-col mx-auto relative'>
     <img className='w-7 h-7 bg-gray-200 rounded-lg' src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png" alt="" />
     {toggle ? (
-      <ul className='flex flex-col w-60 bg-gray-500 absolute left-1/2 transform -translate-x-1/2 mt-9 items-center pb-2'>
+      <ul className='flex flex-col w-60 bg-transparent absolute left-1/2 transform -translate-x-1/2 mt-9 items-center pb-2 z-50'>
      
       <li className='w-11/12 p-1 mt-4 rounded-lg text-xl bg-blue-400 flex justify-center'><Link to={"/nowplaying"}>
           Now Playing

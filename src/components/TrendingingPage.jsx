@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const TrendingPage = () => {
 
 const Trendinglist = useSelector((state)=>state.movies.TrendingMovies)
-console.log(Trendinglist)
+
 
   return (
 Trendinglist &&     

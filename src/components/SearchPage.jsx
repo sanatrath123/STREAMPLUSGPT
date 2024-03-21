@@ -4,6 +4,7 @@ import useSearchMovie from '../hooks/useSearchMovie';
 import { useDispatch, useSelector } from 'react-redux';
 import {AddSearchMovie} from '../store/MovieSlice';
 import Moviecard from './Moviecard'
+import useGenresCategories from '../hooks/useGenresCategories'
 
 const SearchPage = () => {
   
@@ -35,30 +36,44 @@ disptach(AddSearchMovie(event.target.elements.inputValue.value))
  <input
  type='text'
  name="inputValue"
-  className='w-8/12 h-12 mt-5 border-2 rounded-xl text-gray-900 text-2xl'/>
+  className='w-9/12 h-12 mt-5 border-2 rounded-xl text-gray-900 text-2xl'/>
  <button type='submit' className='w-2/12 h-12 mt-5 mx-2 rounded-2xl  bg-blue-700 text-white'>
     Search
  </button>
 </form>
 
+{/* options for different movie categories */}
 
-    <div className='w-full  flex justify-center flex-wrap'>
+<div className='w-auto h-12 absolute mt-24 rounded-lg '>
+<ul className='flex text-2xl font-semibold px-3 text-gray-100 justify-center align-middle  '>
+  <li className='mx-5 px-2 bg-black flex w-2/12 h-full rounded-xl mt-2 justify-center cursor-pointer'>Comedy</li>
+ 
+</ul>
+</div>
+
+    <div className=' flex flex-wrap justify-center mt-8 overflow-hidden'>
   {
- Moviesinfo &&
  Moviesinfo.map((item)=>(
-<Moviecard
-    key={item.id}
-    {...{id: item.id,
-        poster_path: item.poster_path,
-        original_title: item.original_title
-    }}
-    />
+<div className='max-w-60 mx-6' key={item.id}>
+  <Moviecard
+       key={item.id}
+       {...{
+id: item.id ,
+poster_path: item.poster_path,
+rating: item.vote_average,
+title: item.title,
+        }
+       }
+       /> 
+     </div>
  ))
  
 
   }
 
     </div> 
+
+
 
 
         </div>

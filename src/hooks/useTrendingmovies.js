@@ -4,7 +4,9 @@ import {AddTrendingMovies} from '../store/MovieSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
 const useTrendingmovies = () => {
- const url = "https://api.themoviedb.org/3/trending/movie/day?language=en-US"
+const url = "https://api.themoviedb.org/3/trending/movie/day?language=en-US"
+ 
+       //const url ="https://api.themoviedb.org/3/genre/movie/list?language=en"
 
 const dispatch = useDispatch()
 

@@ -1,24 +1,52 @@
 import React, { useEffect } from 'react'
 import {AddToprated} from '../store/MovieSlice'
 import {ApiOption} from '../Constant.js'
-import { useDispatch } from 'react-redux'
+import { useDispatch , useSelector } from 'react-redux'
+import {AddTrendingMovies} from '../store/MovieSlice'
 
 const useTopratedmovie = () => {
+  const TrendingMovies = useSelector((state)=>state.movies.TrendingMovies)
+  const TopratedMovies = useSelector((state)=>state.movies.Toprated)
 
+  
 const dispatch = useDispatch()
 
-const url ='https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1'
 
+//url
+const TopratedUrl ='https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1'
+const TrendingUrl = "https://api.themoviedb.org/3/trending/movie/day?language=en-US"
+
+
+
+//fetching toprated movies 
 const GetToprated = async ()=>{
-    const data = await fetch(url , ApiOption)
+    const data = await fetch(TopratedUrl , ApiOption)
     const json = await data.json()
   
   dispatch(AddToprated(json.results))
 }
 
 
+//fetching trending movies 
+const FetchTrendingData = async () =>{
+  try {
+
+      const data =  await fetch(TrendingUrl,ApiOption)
+      const json = await data.json()
+
+ dispatch(AddTrendingMovies(json.results))
+
+  } catch (error) {
+      console.log("ERROR IN FETCH TReNDING MOVIES", error)
+  }
+}
+
+
+
+//conditional randering 
 useEffect(()=>{
-    GetToprated()
+  !TopratedMovies &&  GetToprated()
+  !TrendingMovies &&  FetchTrendingData()
 },[])
 
 

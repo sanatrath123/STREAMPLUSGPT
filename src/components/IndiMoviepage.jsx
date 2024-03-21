@@ -16,7 +16,7 @@ const dispatch = useDispatch()
  
 const movieId = useParams()
 
-console.log(movieId)
+
 const url = `https://api.themoviedb.org/3/movie/${movieId.movieId}?language=en-US`
  const MovieInfo = useIndivisualtralier(movieId)
 
@@ -26,13 +26,13 @@ const url = `https://api.themoviedb.org/3/movie/${movieId.movieId}?language=en-U
         const data = await fetch(url ,ApiOption)
         const json = await data.json()
         setMoviedata(json)
-        console.log(json)
+       
  }
 
  //for watchlater feature
  const Addlater = ()=>{
   
-  console.log(moviedata)
+ 
  const {id ,poster_path} = moviedata
   dispatch(AddFavoriteList({id ,poster_path}))
   
@@ -43,16 +43,16 @@ const url = `https://api.themoviedb.org/3/movie/${movieId.movieId}?language=en-U
         fetchdata()
   },[movieId])
 
-moviedata && console.log(moviedata)
+
 
 
   return (
-    MovieInfo && moviedata ? <div className='bg-black min-h-screen'>
-     <div className='bg-black w-full flex  m-auto justify-between '>
+    MovieInfo && moviedata ? <div className='bg-zinc-800 min-h-screen'>
+     <div className='bg-zinc-800 w-full flex  m-auto justify-between '>
         <div className='flex flex-wrap w-5/12 text-gray-100 ml-10'>
 <div className='flex w-10/12 items-center flex-wrap'>
 <Link to={"/"}>
-<button  className='bg-gray-200 text-gray-900 font-xl px-5  mr-8 h-8 rounded-lg cursor-pointer flex items-center mt-2'>
+<button  className='bg-gray-200 text-zinc-800 font-xl px-5  mr-8 h-8 rounded-lg cursor-pointer flex items-center mt-2'>
  BACK
 </button></Link>
 
@@ -93,14 +93,14 @@ Play Now
         </div>
          </div> 
 
-         <div className='w-full flex flex-wrap justify-center bg-black'>
-          <h1 className='text-3xl text-gray-100 font-medium flex w-full h-10 pl-10 pt-5 mt-5 '>More Episods</h1>
+         <div className='w-full flex flex-wrap justify-center bg-zinc-900'>
+          <h1 className='text-3xl text-gray-100 font-medium flex w-full h-10 pl-10 pt-5 mt-5 mb-4'>More Episods</h1>
          {
          
           MovieInfo ?
          MovieInfo.map((item)=>(
          
-          <iframe className='w-2/12 aspect-square my-2 mx-2' key={item.id} src={`https://www.youtube.com/embed/${item.key}?si=x9iOrQcMuYRo1F64`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe className='w-2/12 aspect-square  my-2 mx-2' key={item.id} src={`https://www.youtube.com/embed/${item.key}?si=x9iOrQcMuYRo1F64`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
            )) : <h1 className=''>We did not find any videos related to this movie</h1>
       }
          </div>

@@ -81,6 +81,9 @@ return(
     </div>
   ) : null}
 
+
+{/* upcoming movies */}
+
 </div>
 )
 }

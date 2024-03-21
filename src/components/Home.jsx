@@ -13,7 +13,7 @@ const Home = () => {
  const NowPlayingMovies = useSelector((state)=>state.movies. Nowplayingmovies)
  
  useNowplaying()
- useTrendingmovies()
+ //useTrendingmovies()
 
 return( 
   status && NowPlayingMovies  ? 
