@@ -20,7 +20,7 @@ const useIndivisualtralier = ({movieId}) => {
 const Datafetch = async ()=>{
    
  try {
-    
+    debugger;
     const data = await fetch(url , ApiOption)
     const json = await data.json()
     //dispatch(AddIndivisualMovieData(json.results))

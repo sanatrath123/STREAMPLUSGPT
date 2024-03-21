@@ -2,6 +2,7 @@ import React from 'react';
 import Moviecard from './Moviecard';
 import { useSelector } from 'react-redux';
 import useTopratedmovie from '../hooks/useTopratedmovie'
+import TrendingPage from './TrendingingPage';
 
 
 const MovieList = () => {
@@ -11,63 +12,24 @@ const favoritelist = useSelector((state)=>state.movies.FavoriteList)
 
 useTopratedmovie()
 
-//   return (
-//     <div className='w-full bg-red-400 mt-4 relative overflow-x-auto'>
-//       <h1 className='bg-black text-3xl text-white flex justify-center pb-4'>
-//         NOWPLAYING MOVIES
-//       </h1>
-//       {Nowplaying ? (
-//         <div className='w-[100%] flex justify-center space-x-4 mt-4 flex-wrap'>
-//           {Nowplaying.map((movies) => (
-//             <Moviecard
-//               key={movies.id}
-//               {...{
-//                 poster_path: movies.poster_path,
-//                 rating: movies.vote_average,
-//               }}
-//             />
-//           ))}
-//         </div>
-//       )
-//       : null}
-
-// <h1 className='bg-black text-3xl text-white flex justify-center pb-4'>
-//     TOP RATED MOVIES
-//   </h1>
-//   {TopratedList ? (
-//     <div className='w-[100%] flex justify-center space-x-4 mt-4 flex-wrap overflow-x-scroll'>
-//       {TopratedList.map((movies) => (
-//         <Moviecard
-//           key={movies.id}
-//           {...{
-//             poster_path: movies.poster_path,
-//             rating: movies.vote_average,
-//           }}
-//         />
-//       ))}
-//     </div>
-//   ) : null}
-//     </div>
-//   );
-// };
-
-// export default MovieList;
 
 
 
 return(
-<div className='w-full bg-red-400 mt-4 relative overflow-x-auto'>
-  <h1 className='bg-black text-3xl text-white flex justify-center pb-4'>
+<div className=' bg-zinc-800 mt-4 relative'>
+  <h1 className=' bg-transparent font-semibold text-3xl h-20  text-white flex items-center pb-4  pl-8'>
     NOW PLAYING MOVIES   
   </h1>
+  <div className='overflow-hidden '>
   {
   Nowplaying ? (
-    <div className='w-[100%] flex justify-center space-x-4 mt-4 flex-wrap'>
+    <div className=' flex justify-center flex-wrap'>
       {Nowplaying.map((movie) => {
        const Isicon = favoritelist.find((favmovie)=> favmovie?.id === movie?.id)
 return(
+<div key={movie.id} className='max-w-80 mb-4 aspect-square mr-7'>
 <Moviecard
-key={movie.id}
+
 {...{
   id: movie.id,
   poster_path: movie.poster_path,
@@ -77,6 +39,7 @@ key={movie.id}
   
 }}
 />
+</div>
 
 
 )
@@ -84,17 +47,25 @@ key={movie.id}
     </div>
   ) : null
   }
+  </div>
 
-  <h1 className='bg-black text-3xl text-white flex justify-center pb-4'>
+{/* trending component */}
+<TrendingPage/>
+
+
+{/* Toprated component */}
+  <h1 className=' bg-transparent font-semibold text-3xl text-white flex pl-8 pb-4 mt-4'>
     TOP RATED MOVIES
   </h1>
-  {TopratedList ? (
-    <div className='w-[100%] flex justify-center space-x-4 mt-4 flex-wrap overflow-x-scroll'>
+
+{TopratedList ? (
+    <div className=' flex  space-x-10  overflow-x-auto overflow-y-hidden pb-12 px-7' style={{ WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none', '-ms-overflow-style': 'none' }}>
       {TopratedList.map((movie) => {
         const isFav = favoritelist.find((favmovie)=> favmovie?.id === movie?.id)
        return(
-<Moviecard
-  key={movie.id}
+        <div className='min-w-80 aspect-square' key={movie.id}>
+          <Moviecard
+  
   {...{
     id: movie.id,
     poster_path: movie.poster_path,
@@ -103,11 +74,13 @@ key={movie.id}
     icon: isFav ? false : true
   }}
 />
+        </div>
 
        )
      } )}
     </div>
   ) : null}
+
 </div>
 )
 }

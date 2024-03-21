@@ -47,8 +47,8 @@ moviedata && console.log(moviedata)
 
 
   return (
-    MovieInfo && moviedata ? <>
-     <div className='bg-black w-full flex  m-auto justify-between'>
+    MovieInfo && moviedata ? <div className='bg-black min-h-screen'>
+     <div className='bg-black w-full flex  m-auto justify-between '>
         <div className='flex flex-wrap w-5/12 text-gray-100 ml-10'>
 <div className='flex w-10/12 items-center flex-wrap'>
 <Link to={"/"}>
@@ -96,12 +96,15 @@ Play Now
          <div className='w-full flex flex-wrap justify-center bg-black'>
           <h1 className='text-3xl text-gray-100 font-medium flex w-full h-10 pl-10 pt-5 mt-5 '>More Episods</h1>
          {
+         
+          MovieInfo ?
          MovieInfo.map((item)=>(
+         
           <iframe className='w-2/12 aspect-square my-2 mx-2' key={item.id} src={`https://www.youtube.com/embed/${item.key}?si=x9iOrQcMuYRo1F64`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-           ))
+           )) : <h1 className=''>We did not find any videos related to this movie</h1>
       }
          </div>
-         </>
+         </div>
           : null
         
    )
