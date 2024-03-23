@@ -13,13 +13,7 @@ const useSearchMovie = () => {
 const url =  `https://api.themoviedb.org/3/search/movie?query=${name}&include_adult=false&language=en-US&page=1`
 const dispatch = useDispatch()
 
-useEffect(()=>{
-    if(prevname.current != name){
-        Datafetch() 
-        prevname.current = name
-    }
-},[])
- 
+
  
 
 const Datafetch = async  () =>{
@@ -37,6 +31,13 @@ const result = json.results.filter((movies, index)=>(
 dispatch(AddSearchMovieinfo(result)) 
 }
 
+
+//function called 
+if(prevname.current !== name){
+ 
+    Datafetch() 
+    prevname.current = name
+}
 
 
 

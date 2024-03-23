@@ -16,6 +16,8 @@ import SearchPage from './components/SearchPage.jsx'
 import Watchlater from './components/Watchlater.jsx'
 import NowplayingPage from './components/NowplayingPage.jsx'
 import Topratedpage from './components/Topratedpage.jsx'
+import CategoryPage from './components/CategoryPage.jsx'
+
 
 const route = createBrowserRouter([
 
@@ -85,7 +87,13 @@ const route = createBrowserRouter([
 <Topratedpage/>
     </AuthProtection>
   }
-  
+  ,
+  {
+    path: "/category/:name/:genresId",
+    element: <AuthProtection Authentication={true}>
+<CategoryPage/>
+    </AuthProtection>
+  }
 
 ]
 }

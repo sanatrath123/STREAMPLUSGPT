@@ -13,7 +13,6 @@ const url = "https://api.themoviedb.org/3/genre/movie/list?language=en"
 const FetchData = async  ()=> {
     const data = await fetch(url , ApiOption)
     const json = await data.json()
-console.log(json.genres)
 dispatch(AddGenresData(json.genres))
 
 }
