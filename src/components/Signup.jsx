@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {useForm} from 'react-hook-form'
 import Input from "./Input";
 import authService from '../Appwrite/Auth'
@@ -8,14 +8,17 @@ import {  useDispatch } from "react-redux";
 
 const Signup = () => {
 
-  const {register , handleSubmit} = useForm()
+  const {register , handleSubmit , formState: { errors }} = useForm()
  const dispatch = useDispatch()
  const Navigate = useNavigate()
+ const [error , setError] = useState()
+
 //create function 
  const create = async  (data)=>{
+setError(null)
 
 const userdata = await  authService.CreateAccount(data)
-
+ userdata == "Wrong Email Id & Passowrd" && setError("Wrong Email Id & Passowrd")
 if(userdata){
   const userData = authService.GetCurrentUser(userdata)
       dispatch(login(userData))
@@ -56,26 +59,34 @@ if(userdata){
                         required:true,
                         validate: {
                           matchPatern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
-                          "Email address must be a valid address",
+                          "Email address must be a uniqe valid address",
                       }
                       })
                     }
                     
                     />
+                    {errors.email && <p className="text-gray-200" style={{ marginTop: '-1rem' }}>{errors.email.message}</p>}
 
-                    <Input
-                    type="password"
-                    placeholder="Enter your Password"
-                    label="PASSWORD"
+<Input
+  type="password"
+  placeholder="Enter your Password"
+  label="PASSWORD"
+  {
+    ...register("password", {
+      required: true,
+      validate: {
+        matchPattern: value =>
+          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()-_+=]).{8,}$/.test(
+            value
+          ) || "Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, one number, and one special character",
+      },
+    })
+  }
+/>
+{errors.password && <p className="text-gray-200" style={{ marginTop: '-1rem' }}>{errors.password.message}</p>}
 
-                    {
-                      ...register("password",{
-                        required:true,
-                      })
-                    }
-                    
-                    />
-                        
+
+               
                         
                         <button type="submit" className="w-full text-white bg-blue-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Create an account</button>
                   
@@ -85,10 +96,11 @@ if(userdata){
                 <p className="text-sm font-light text-white dark:text-gray-400">
                         Already have an account? 
                         {/* ADD THE LINK */}
-                        {/* <Link className="font-medium text-primary-600 hover:underline dark:text-primary-500"></Link>Login here <Link/> */}
+                        <Link to="/login" >Login here </Link>
                     </p>
                 
             </div>
+            <span className="flex h-8 text-red-400 text-lg font-extralight w-11/12 mx-auto mb-2">{error !== null &&  error}</span>
         </div>
     </div>
   

@@ -2,6 +2,9 @@ import { Client, Account ,ID } from 'appwrite';
 import conf from '../conf/conf'
 
 class Authservice {
+
+
+
      client = new Client()
       account 
 
@@ -23,6 +26,7 @@ async CreateAccount(data) {
            }
     } catch (error) {
         console.log("ERROR IN SIGNUP SERVICE",error)
+        return "Wrong Email Id & Passowrd"
     }
 }
 
@@ -37,6 +41,8 @@ async LoginAccount(data){
            }
     } catch (error) {
         console.log("ERROR IN LOGIN SERVICES", error)
+        return ("PLEASE ENTER VALID EMAIL AND PASSWORD")
+         
     }
 }
 

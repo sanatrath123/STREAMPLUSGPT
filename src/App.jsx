@@ -11,7 +11,7 @@ function App() {
   return (
    
 
-  <div className=' block bg-gray-300 '>
+  <div className=' block bg-gray-300'>
   <Header/>
   <Outlet/> 
   
