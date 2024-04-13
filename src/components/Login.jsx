@@ -5,6 +5,7 @@ import { useNavigate,Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import authService from '../Appwrite/Auth';
 import {login} from '../store/AuthSlice'
+import servise from "../Appwrite/Database";
 
 
 function Login() {
@@ -16,26 +17,26 @@ const [error , setError]= useState()
 
 //function onsubmit
 const create = async (data)=>{
-    setError(null)
-    try {
-        
-        const session = await authService.LoginAccount(data)
-      session== "PLEASE ENTER VALID EMAIL AND PASSWORD" && setError(session)
-       
-        if(session){
-            const userData = await authService.GetCurrentUser()
-       
-            if(userData){
-              
-                dispatch(login(userData))
-                navigate("/")    
-        }
-    }
+  setError(null)
+  try {
+      
+      const session = await authService.LoginAccount(data)
+    session== "PLEASE ENTER VALID EMAIL AND PASSWORD" && setError(session)
+     debugger
+      if(session){
+          const userData = await authService.GetCurrentUser()
+     
+          if(userData){
+           
+              dispatch(login(userData))
+              navigate("/")    
+      }
+  }
 
-    } catch (error) {
-        console.log("ERROR IN LOGIN HANDEL FUNCTION",error)
+  } catch (error) {
+      console.log("ERROR IN LOGIN HANDEL FUNCTION",error)
 
-    }
+  }
 }
 
   return (

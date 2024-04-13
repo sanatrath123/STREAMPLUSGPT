@@ -26,7 +26,7 @@ async CreateAccount(data) {
            }
     } catch (error) {
         console.log("ERROR IN SIGNUP SERVICE",error)
-        return "Wrong Email Id & Passowrd"
+        return error
     }
 }
 

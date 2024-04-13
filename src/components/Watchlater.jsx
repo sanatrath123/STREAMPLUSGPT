@@ -1,14 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector,useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { DeleteFavorite ,DeleteAllFavorite } from '../store/MovieSlice'
+import { DeleteFavorite ,DeleteAllFavorite ,AddFavoriteList ,RetriveFavlist} from '../store/MovieSlice'
 
 const Watchlater = () => {
-
+const DBwatchlater = useSelector((state)=>state.auth.userdatabase)
 const movielist = useSelector((state)=>state.movies.FavoriteList)
 const dispatch = useDispatch()
-//delete function
 
+//delete function
 const deleteMovie= (id)=>{
 const Id = id ;
 const newmovie = movielist.filter((movie)=>(
@@ -23,10 +23,20 @@ console.log(newmovie)
 
 //delete all function
 const DeleteAll =()=>{
-   
     dispatch(DeleteAllFavorite())  //implement this feature in tommorow
 }
   
+
+useEffect(()=>{
+  
+    console.log( DBwatchlater[0])
+    DBwatchlater?.[0]?.watchlater.map((item)=>{
+        const {id, poster_path} = item
+        dispatch(AddFavoriteList({id ,poster_path}))
+    })
+
+dispatch(RetriveFavlist())
+},[])
 
     return (
 <div className='w-full flex items-center flex-col mx-auto mt-4'>

@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import {useForm} from 'react-hook-form'
 import Input from "./Input";
 import authService from '../Appwrite/Auth'
-import {login} from '../store/AuthSlice'
+import {login,AddUser} from '../store/AuthSlice'
 import { useNavigate , Link} from "react-router-dom";
 import {  useDispatch } from "react-redux";
+import servise from "../Appwrite/Database";
 
 const Signup = () => {
 
@@ -14,19 +15,28 @@ const Signup = () => {
  const [error , setError] = useState()
 
 //create function 
- const create = async  (data)=>{
+ const Create = async  (data)=>{
 setError(null)
 
 const userdata = await  authService.CreateAccount(data)
  userdata == "Wrong Email Id & Passowrd" && setError("Wrong Email Id & Passowrd")
 if(userdata){
-  const userData = authService.GetCurrentUser(userdata)
-      dispatch(login(userData))
- console.log(userData)
-  Navigate('/login')
+  debugger
+  //login the user
+  const session = await authService.LoginAccount(data)
+const currentuser = await authService.GetCurrentUser()
+if(currentuser){
+  const userdatabase =  await servise.CreateUser(userdata)
+  dispatch(login(userdata))
+  dispatch(AddUser(userdatabase))
+  Navigate("/")
+}else{
+  Navigate("/login")
 }
 }
+ }
 
+ 
   return (
  
     <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 mt-0">
@@ -37,7 +47,7 @@ if(userdata){
                     Create and account
                 </h1>
 
-                <form onSubmit={handleSubmit(create)}>
+                <form onSubmit={handleSubmit(Create)}>
                     <div className='space-y-5'>
                         <Input
                         type="text"

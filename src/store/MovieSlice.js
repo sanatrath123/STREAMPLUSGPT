@@ -43,8 +43,19 @@ const MovieSlice = createSlice({
       if(!isAllready){
         state.FavoriteList.push(action.payload)
       }
+
+  
       //console.log(state.FavoriteList)
     },
+RetriveFavlist: (state)=>{
+  const newData =  state.FavoriteList.filter((item ,index)=>(
+    state.FavoriteList.findIndex((obj)=>obj.id === item.id) === index
+  ))
+
+  state.FavoriteList = []
+  state.FavoriteList = newData
+},
+
 
     DeleteFavorite: (state ,action)=>{
     
@@ -75,5 +86,5 @@ state.UpcomingMovies= action.payload
 
 })
 
-export const  {AddNowplaying,AddMovieData,AddTrailerid , AddToprated,AddFavoriteList , AddSearchMovie , AddSearchMovieinfo,DeleteFavorite, AddTrendingMovies,DeleteAllFavorite,AddUpcomingMovies} = MovieSlice.actions 
+export const  {AddNowplaying,AddMovieData,AddTrailerid , AddToprated,AddFavoriteList , AddSearchMovie , AddSearchMovieinfo,DeleteFavorite, AddTrendingMovies,DeleteAllFavorite,AddUpcomingMovies ,RetriveFavlist} = MovieSlice.actions 
 export default MovieSlice.reducer

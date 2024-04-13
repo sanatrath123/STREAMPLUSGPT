@@ -5,9 +5,12 @@ import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { ApiOption } from '../Constant'
 import { AddFavoriteList } from '../store/MovieSlice'
+import servise from '../Appwrite/Database'
+
 
 const IndiMoviepage = () => {
- 
+   const subscriber = useSelector((state)=>state.auth.userdatabase?.[0]?.$id)
+
 const dispatch = useDispatch()
 //   const id = useSelector((state)=>state.movies.MovieId?.id)
 //   console.log(id)
@@ -35,6 +38,7 @@ const url = `https://api.themoviedb.org/3/movie/${movieId.movieId}?language=en-U
  
  const {id ,poster_path} = moviedata
   dispatch(AddFavoriteList({id ,poster_path}))
+  servise.createWatchlater(id , poster_path ,subscriber)
   
    }
 

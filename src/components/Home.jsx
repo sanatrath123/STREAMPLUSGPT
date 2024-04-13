@@ -1,11 +1,13 @@
 
-import { useSelector } from 'react-redux'
+import { useSelector ,useDispatch } from 'react-redux'
 import useNowplaying from '../hooks/useNowplaying'
 import Maincontainer from './Maincontainer'
 import MovieList from './MovieList'
 import Login from './Login'
 import useTrendingmovies from '../hooks/useTrendingmovies'
-
+import {AddUser} from "../store/AuthSlice"
+//delete this this for demo porpuse & userdatbase
+import servise from '../Appwrite/Database'
 
 const Home = () => {
   
@@ -13,7 +15,20 @@ const Home = () => {
  const NowPlayingMovies = useSelector((state)=>state.movies. Nowplayingmovies)
  
  useNowplaying()
- //useTrendingmovies()
+
+//get the user from the database and store its info
+ const id = useSelector((state)=>state.auth.UserData?.$id)
+ const dispatch = useDispatch()
+ const databasedata = async ()=>{
+const userdatbase = await  servise.GetUserData(id)
+if(userdatbase){
+  console.log(userdatbase)
+  dispatch(AddUser(userdatbase))
+}
+ }
+ databasedata()
+//ends 
+
 
 return( 
   status && NowPlayingMovies  ? 
