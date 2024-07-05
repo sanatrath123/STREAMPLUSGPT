@@ -21,7 +21,7 @@ setError(null)
 const userdata = await  authService.CreateAccount(data)
  userdata == "Wrong Email Id & Passowrd" && setError("Wrong Email Id & Passowrd")
 if(userdata){
-  debugger
+ 
   //login the user
   const session = await authService.LoginAccount(data)
 const currentuser = await authService.GetCurrentUser()

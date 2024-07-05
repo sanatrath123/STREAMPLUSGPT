@@ -33,7 +33,6 @@ async CreateAccount(data) {
 //login 
 async LoginAccount(data){
     const {email , password}= data
-
     try {
         const User = await this.account.createEmailSession(email ,password)
         if(User){

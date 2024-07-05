@@ -23,7 +23,7 @@ const AddMovies = ()=>{
  console.log(props)
 dispatch(AddFavoriteList(props))
 setShowicon(false)
-debugger
+
 servise.createWatchlater(props)
 }
 

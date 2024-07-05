@@ -22,7 +22,6 @@ const create = async (data)=>{
       
       const session = await authService.LoginAccount(data)
     session== "PLEASE ENTER VALID EMAIL AND PASSWORD" && setError(session)
-     debugger
       if(session){
           const userData = await authService.GetCurrentUser()
      

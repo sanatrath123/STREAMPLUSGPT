@@ -16,7 +16,7 @@ useTralierid()
 
     return (
 NowPlaying && trailerid?
-  <div className='w-full h-screen bg-gray-700 items-start z-0'>
+  <div className='w-full h-screen bg-gray-700 items-start z-0 hidden sm:hidden md:hidden lg:block xl:block'>
       
 <Bgvideo  id={trailerid[0]?.key}/>
 

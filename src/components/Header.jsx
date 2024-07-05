@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import authService from '../Appwrite/Auth'
 import {logout} from '../store/AuthSlice'
 import { changeLang } from '../store/LangSlice';
 import lang from '../hooks/lang';
+import { reset } from '../store/MovieSlice';
 
 const Header = () => {
+  const NavRef = useRef('')
   const [toggle , setToggle] = useState(false)
   const status = useSelector((state) => state.auth.status);
 const Navigate = useNavigate()
@@ -21,10 +23,17 @@ const StoreLang = useSelector((state)=>state.Lang.lang)
   
  if(data){ 
   dispatch(logout())
+  dispatch(reset())
   Navigate('/login')
  }
     
      
+  }
+
+  const handleHover = ()=>{
+    if(toggle == true) return
+
+    setToggle(true)
   }
 
   const Navitems = [
@@ -51,18 +60,14 @@ const StoreLang = useSelector((state)=>state.Lang.lang)
     
   ];
 
-  const Optionchange = (event)=>{
-
-dispatch(changeLang(event.target.value))
-
-  }
+ 
 
   return (
     <div className='w-full h-20 bg-zinc-800 flex justify-between '>
       <img src='https://www.brandbucket.com/sites/default/files/logo_uploads/405492/large_plusstream.png' alt='logo' className='h-30 w-30 ml-8 bg-gray-300' />
       <ul className='text-white font-bold text-xl flex flex-wrap  w-6/12'>
         {Navitems.map((item) => (
-          item.active ? <li key={item.name} className='my-auto mx-8 p-2' onClick={() => {}}>
+          item.active ? <li key={item.name} className='lg:relative md:relative absolute my-auto mx-8 p-2 hidden lg:block xl:block ' onClick={() => {}}>
             <Link to={item.slug}>{item.name}</Link>
           </li> : null
         ))}
@@ -74,24 +79,27 @@ dispatch(changeLang(event.target.value))
 
         {
           status ? <>
-          <li className='my-auto mx-8 p-2  cursor-pointer bg-orange-400 rounded-lg' onClick={LogoutHandel}>
+          <li className='my-auto mx-8 p-2  cursor-pointer bg-orange-400 rounded-lg hidden xl:block' onClick={LogoutHandel}>
           {lang[StoreLang].LOGOUT}
          
         </li>
 
       
-       <li className='my-auto mx-8 p-2 corser-pointer bg-purple-600 rounded-lg'>
+       <li className='my-auto mx-8 p-2 corser-pointer bg-purple-600 rounded-lg hidden xl:block'>
           
        <Link to={'/GptSearch'}>  GPt Search </Link>
         </li>
        
 
 
-        <li className='my-auto mx-8 p-1 flex flex-col cursor-pointer' onClick={() => setToggle(!toggle)}>
+        <li 
+         className='my-auto mx-8 p-1 flex flex-col cursor-pointer' 
+        onMouseOver={handleHover}
+        onClick={() => setToggle(!toggle)}>
   <div className='flex flex-col mx-auto relative'>
-    <img className='w-7 h-7 bg-gray-200 rounded-lg' src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png" alt="" />
+    <img className=' h-7 ' src="public/menu.png" alt="" />
     {toggle ? (
-      <ul className='flex flex-col w-60 bg-transparent absolute left-1/2 transform -translate-x-1/2 mt-9 items-center pb-2 z-50 bg-zinc-700'>
+      <ul className='flex flex-col w-60 bg-transparent absolute left-[-20px] transform -translate-x-1/2 mt-9 items-center pb-2 z-50 bg-zinc-700 rounded-lg top-2'>
      
       <li className='w-11/12 p-1 mt-4 rounded-lg text-xl bg-blue-400 flex justify-center'><Link to={"/nowplaying"}>
           Now Playing
@@ -101,9 +109,19 @@ dispatch(changeLang(event.target.value))
         <Link to={"/toprated"}>
           TOP RATED
           </Link></li>
-       <Link to={"/watchlater"}>
-       <li className='w-full p-1 mt-2 rounded-lg text-xl bg-blue-400 flex justify-center'>WatchLater</li>
-       </Link>
+      
+       <li className='w-11/12 p-1 mt-2 rounded-lg text-xl bg-blue-400 flex justify-center'> <Link to={"/watchlater"}>WatchLater </Link></li>
+      
+
+       {/* <li className='w-full hidden sm:block md:block p-1 mt-2 rounded-lg text-xl bg-blue-400  justify-center  '><Link to={'/GptSearch'}>  GPt Search </Link></li> */}
+       <li className='w-11/12 block lg:hidden md:block p-1 mt-2 rounded-lg text-xl bg-yellow-400 justify-center text-center'>
+  <Link to={'/GptSearch'}>GPt Search</Link>
+  </li>
+
+  <li className='w-11/12 block lg:hidden md:block p-1 mt-2 rounded-lg text-xl bg-violet-400 justify-center text-center'>Search🔍</li>
+
+  <li className='w-11/12 block lg:hidden md:block p-1 mt-2 rounded-lg text-xl bg-red-400 justify-center text-center'>Logout</li>
+
       </ul>
     ) : null}
   </div>
