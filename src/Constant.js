@@ -14,8 +14,6 @@ export const OpenAIKey =  "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"
 
 
 
-
-
  //'https://api.themoviedb.org/3/movie/changes?page=1'
 
 

@@ -63,9 +63,10 @@ const StoreLang = useSelector((state)=>state.Lang.lang)
  
 
   return (
-    <div className='w-full h-20 bg-zinc-800 flex justify-between '>
-      <img src='https://www.brandbucket.com/sites/default/files/logo_uploads/405492/large_plusstream.png' alt='logo' className='h-30 w-30 ml-8 bg-gray-300' />
-      <ul className='text-white font-bold text-xl flex flex-wrap  w-6/12'>
+    <div className='w-full bg-zinc-800 flex flex-nowrap  justify-between '>
+      <img src='https://www.brandbucket.com/sites/default/files/logo_uploads/405492/large_plusstream.png' alt='logo' className='md:h-30 md:w-30 w-20 h-16 ml-8 bg-gray-300' />
+      <ul className='text-white font-bold text-xl flex flex-wrap w-7/12 2xl:w-[60%] lg:justify-center justify-end'>
+      
         {Navitems.map((item) => (
           item.active ? <li key={item.name} className='lg:relative md:relative absolute my-auto mx-8 p-2 hidden lg:block xl:block ' onClick={() => {}}>
             <Link to={item.slug}>{item.name}</Link>
@@ -97,7 +98,7 @@ const StoreLang = useSelector((state)=>state.Lang.lang)
         onMouseOver={handleHover}
         onClick={() => setToggle(!toggle)}>
   <div className='flex flex-col mx-auto relative'>
-    <img className=' h-7 ' src="public/menu.png" alt="" />
+    <img className=' h-7 ' src="/menu.png" alt="" />
     {toggle ? (
       <ul className='flex flex-col w-60 bg-transparent absolute left-[-20px] transform -translate-x-1/2 mt-9 items-center pb-2 z-50 bg-zinc-700 rounded-lg top-2'>
      
@@ -120,7 +121,9 @@ const StoreLang = useSelector((state)=>state.Lang.lang)
 
   <li className='w-11/12 block lg:hidden md:block p-1 mt-2 rounded-lg text-xl bg-violet-400 justify-center text-center'>Search🔍</li>
 
-  <li className='w-11/12 block lg:hidden md:block p-1 mt-2 rounded-lg text-xl bg-red-400 justify-center text-center'>Logout</li>
+  <li className='w-11/12 block lg:hidden md:block p-1 mt-2 rounded-lg text-xl bg-red-400 justify-center text-center'
+  
+  >Logout</li>
 
       </ul>
     ) : null}

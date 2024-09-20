@@ -6,6 +6,8 @@ import {login,AddUser} from '../store/AuthSlice'
 import { useNavigate , Link} from "react-router-dom";
 import {  useDispatch } from "react-redux";
 import servise from "../Appwrite/Database";
+import { MdOutlineRemoveRedEye } from "react-icons/md";
+
 
 const Signup = () => {
 
@@ -13,6 +15,8 @@ const Signup = () => {
  const dispatch = useDispatch()
  const Navigate = useNavigate()
  const [error , setError] = useState()
+const [Passtype , setType ] = useState('password')
+ 
 
 //create function 
  const Create = async  (data)=>{
@@ -77,8 +81,9 @@ if(currentuser){
                     />
                     {errors.email && <p className="text-gray-200" style={{ marginTop: '-1rem' }}>{errors.email.message}</p>}
 
+<div className="relative">
 <Input
-  type="password"
+  type={Passtype}
   placeholder="Enter your Password"
   label="PASSWORD"
   {
@@ -93,6 +98,10 @@ if(currentuser){
     })
   }
 />
+<MdOutlineRemoveRedEye className="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer" size={25}
+onClick={()=>setType((prev)=>prev=='password' ? 'text' :'password')}
+/>
+</div>
 {errors.password && <p className="text-gray-200" style={{ marginTop: '-1rem' }}>{errors.password.message}</p>}
 
 

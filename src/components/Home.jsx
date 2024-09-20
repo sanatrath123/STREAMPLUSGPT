@@ -13,8 +13,8 @@ const Home = () => {
   
   const status = useSelector((state)=>state.auth.status)
  const NowPlayingMovies = useSelector((state)=>state.movies. Nowplayingmovies)
- 
- useNowplaying()
+ useTrendingmovies()
+ //useNowplaying()
 
 //get the user from the database and store its info
  const id = useSelector((state)=>state.auth.UserData?.$id)
@@ -22,7 +22,7 @@ const Home = () => {
  const databasedata = async ()=>{
 const userdatbase = await  servise.GetUserData(id)
 if(userdatbase){
-  console.log(userdatbase)
+  
   dispatch(AddUser(userdatbase))
 }
  }

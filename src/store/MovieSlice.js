@@ -38,7 +38,7 @@ const MovieSlice = createSlice({
     },
 
     AddFavoriteList: (state, action)=>{
-      debugger
+      
      const disData = action.payload
      const isAllready = state.FavoriteList.some((movie)=> movie.id === disData.id)
       if(!isAllready){
@@ -49,7 +49,6 @@ const MovieSlice = createSlice({
       //console.log(state.FavoriteList)
     },
 RetriveFavlist: (state)=>{
-  debugger
   const newData =  state.FavoriteList.filter((item ,index)=>(
     state.FavoriteList.findIndex((obj)=>obj.id === item.id) === index
   ))
