@@ -4,7 +4,7 @@ import Input from "./Input";
 import { useNavigate,Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import authService from '../Appwrite/Auth';
-import {login} from '../store/AuthSlice'
+import {login as ReduxLogin} from '../store/AuthSlice'
 import servise from "../Appwrite/Database";
 
 
@@ -26,8 +26,7 @@ const create = async (data)=>{
           const userData = await authService.GetCurrentUser()
      
           if(userData){
-           
-              dispatch(login(userData))
+              dispatch(ReduxLogin(userData))
               navigate("/")    
       }
   }

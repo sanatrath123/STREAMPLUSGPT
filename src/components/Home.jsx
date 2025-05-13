@@ -10,11 +10,11 @@ import {AddUser} from "../store/AuthSlice"
 import servise from '../Appwrite/Database'
 
 const Home = () => {
-  
+
+  useTrendingmovies()
+  useNowplaying()
   const status = useSelector((state)=>state.auth.status)
  const NowPlayingMovies = useSelector((state)=>state.movies. Nowplayingmovies)
- useTrendingmovies()
- //useNowplaying()
 
 //get the user from the database and store its info
  const id = useSelector((state)=>state.auth.UserData?.$id)
@@ -22,7 +22,6 @@ const Home = () => {
  const databasedata = async ()=>{
 const userdatbase = await  servise.GetUserData(id)
 if(userdatbase){
-  
   dispatch(AddUser(userdatbase))
 }
  }

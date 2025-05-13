@@ -22,16 +22,16 @@ const [Passtype , setType ] = useState('password')
  const Create = async  (data)=>{
 setError(null)
 
-const userdata = await  authService.CreateAccount(data)
- userdata == "Wrong Email Id & Passowrd" && setError("Wrong Email Id & Passowrd")
-if(userdata){
- 
+const {UserAccount , error} = await  authService.CreateAccount(data)
+if(error) return setError(error)
+if(UserAccount){
   //login the user
   const session = await authService.LoginAccount(data)
 const currentuser = await authService.GetCurrentUser()
+debugger
 if(currentuser){
-  const userdatabase =  await servise.CreateUser(userdata)
-  dispatch(login(userdata))
+  const userdatabase =  await servise.CreateUser(UserAccount)
+  dispatch(login(UserAccount))
   dispatch(AddUser(userdatabase))
   Navigate("/")
 }else{

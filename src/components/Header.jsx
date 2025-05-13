@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import authService from '../Appwrite/Auth'
-import {logout} from '../store/AuthSlice'
+import {logout as ReduxLogout} from '../store/AuthSlice'
 import { changeLang } from '../store/LangSlice';
 import lang from '../hooks/lang';
 import { reset } from '../store/MovieSlice';
@@ -20,9 +20,9 @@ const StoreLang = useSelector((state)=>state.Lang.lang)
   //logout function
   const LogoutHandel = async ()=>{
     const data = await  authService.LogoutAccount() 
-  
+  console.log(data)
  if(data){ 
-  dispatch(logout())
+  dispatch(ReduxLogout())
   dispatch(reset())
   Navigate('/login')
  }

@@ -49,7 +49,7 @@ async LoginAccount(data){
 async LogoutAccount(){
    
 try {
-    
+    console.log("logout")
      return await this.account.deleteSessions(this.account)
       
 } catch (error) {
